@@ -1,0 +1,29 @@
+.list{
+  display: flex;
+  background-color: yellow;
+  border: solid whitesmoke;
+}
+
+.item{
+  margin-right: 20px;;
+}
+
+
+.all {
+  display: flex;
+
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+.radio{
+  display: flex;
+  flex-direction: column;
+}
+
+.checked{
+  color:orange;
+}
