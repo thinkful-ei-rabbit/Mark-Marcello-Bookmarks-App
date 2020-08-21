@@ -270,7 +270,7 @@ function deleteItem(){
 // Function that sets the filter rating to show whats displayed
 function setRatingFilter(){
   $('main').on('click', '.select', function (){
-    let rating = $('option[name=rating]:checked').val();
+    let rating = $('option[id=rating]:checked').val();
     store.toggleRating(rating)
     render();
   })
