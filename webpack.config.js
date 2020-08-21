@@ -5,7 +5,7 @@ module.exports = {
   resolve : {
     alias: { 'jquery-ui': 'jquery-ui/dist/jquery-ui.js' }
   },  
-  entry: './src/index.js',
+  entry: './docs/src/index.js',
   output: {
     path: __dirname + '/dist',
     filename: 'index_bundle.js'
@@ -13,7 +13,7 @@ module.exports = {
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './docs/src/index.html',
     })
   ],
   module: {
