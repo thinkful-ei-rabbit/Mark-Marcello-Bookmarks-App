@@ -13,10 +13,10 @@ function addHtml(item){
     return `<li class="element" data-item-id="${item.id}">
     <div class = 'list'>
       <div class = 'item'>
-        <p>${item.title}</p>
+        ${item.title}
       </div>
       <div class = 'item'>  
-        <p>⭐${item.rating}⭐</p>
+        ⭐${item.rating}⭐
      </div>
     </div>
     </li>`
@@ -29,22 +29,27 @@ function addHtml(item){
 
 // Holds html for expanded view
 function addHtmlExpanded(item){
+  if (item.rating >= store.store.filter ){
     return `<li class="element" data-item-id="${item.id}">
-  <div class = 'list'>
-    <div class = 'item'>
-      <p>${item.title}</p>
+    <div class = 'list'>
+      <div class = 'item'>
+        ${item.title}
+      </div>
+      <div class = 'item'>  
+        ⭐${item.rating}⭐
+     </div>
+     <div class = 'expand'>
+      ${item.desc}
+      <a class = 'button' href='${item.url}';"}'>Link</a>
+      <button class = 'edit'>Edit</button>
+      <button class = 'delete'>Delete</button>
+     </div>
     </div>
-    <div class = 'item'>  
-      <p>⭐${item.rating}⭐</p>
-   </div>
-   <div class = 'expand'>
-    <p>${item.desc}</p>
-    <a class = 'button' href='${item.url}';"}'>Link</a>
-    <button class = 'edit'>Edit</button>
-    <button class = 'delete'>Delete</button>
-   </div>
-  </div>
-  </li>`
+    </li>`
+
+  }
+  
+  
 }
 // Holds html for the add bookmark form
 function addLinkHtml(){
@@ -56,18 +61,18 @@ function addLinkHtml(){
         <input class= 'title' type="text" placeholder ='Title' name ='title'>
         <input class = 'link' type="text" placeholder = 'Link goes here'name ='link'>
       </div>
-      <textarea id="description" cols="30" rows="10" placeholder = 'Description goes here.' name ='description'></textarea>
+      <textarea id="description" placeholder = 'Description goes here.' name ='description'></textarea>
     </div>
     <div class = 'radio'>
-      <input type="radio" name="rating" id="5stars" value = 5>
+      <input type="radio" name="rating" id="5stars" value = 5/>
       <label for="5stars">5 Stars! ⭐⭐⭐⭐⭐</label>
-      <input type="radio" name="rating" id="4stars" value = 4>
+      <input type="radio" name="rating" id="4stars" value = 4/>
       <label for="4stars">4 Stars! ⭐⭐⭐⭐✰</label>
-      <input type="radio" name="rating" id="3stars" value = 3>
+      <input type="radio" name="rating" id="3stars" value = 3/>
       <label for="3stars">3 Stars! ⭐⭐⭐✰✰</label>
-      <input type="radio" name="rating" id="2stars" value = 2>
+      <input type="radio" name="rating" id="2stars" value = 2/>
       <label for="2stars">2 Stars!⭐⭐✰✰✰</label>
-      <input type="radio" name="rating" id="1star" value = 1>
+      <input type="radio" name="rating" id="1star" value = 1/>
       <label for="1star">1 Star! ⭐✰✰✰✰</label>
     </div>
   </div>
@@ -91,9 +96,9 @@ return `<li class="element" data-item-id="${item.id}">
   <input id ='changeRating' class = 'changeRating' type = 'text' value = '${item.rating}'>
   
  </div>
- <div class = 'expand'>
+ <div class = 'expands'>
  <label for = 'newDesc'>Change the Description?</label> 
- <textarea type = 'text' id = 'newDesc' cols="30" rows="10">${item.desc}</textarea>
+ <textarea type = 'text' id = 'newDesc'>${item.desc}</textarea>
   
   <label for ='newLink'>New Link?</label>
   <input id ='newLink' type = 'text' value = '${item.url}' class = 'changeUrl'>
@@ -115,37 +120,45 @@ function generateBookmarkString(bookmarks){
 function render(){
   
   let info = store.store
-  if (info.adding === false){
-    let items = [...store.store.bookmarks] 
-    if(info.expanded !== null) {
-      const htmlString = store.store.bookmarks.map( function (val){
-     if (val.id === store.store.expanded){
-      if(info.editing === false){
-        return addHtmlExpanded(val)
-      } else {
-        return editValues(val)
-      }
-          
-     } else {
-    
-      return addHtml(val)
-     }
-    })
-     $('ul').html( htmlString );
+  if (info.error !== null){
+    functionAlert(info.error)
+    store.clearError
 
+  }  else {
+    if (info.adding === false){
+      let items = [...store.store.bookmarks] 
+      if(info.expanded !== null) {
+        const htmlString = store.store.bookmarks.map( function (val){
+       if (val.id === store.store.expanded){
+        if(info.editing === false){
+          return addHtmlExpanded(val)
+        } else {
+          return editValues(val)
+        }
+            
+       } else {
+      
+        return addHtml(val)
+       }
+      })
+       $('ul').html( htmlString );
+  
+      } else {
+        const addBookmarks = generateBookmarkString(items)
+        $('ul').html(addBookmarks)
+      }
+  
     } else {
-      const addBookmarks = generateBookmarkString(items)
+  
+      let entryForm = addLinkHtml()
+      $('div.home').html(entryForm)
+      let items = [...store.store.bookmarks] 
+      const addBookmarks = generateBookmarkString(items);
       $('ul').html(addBookmarks)
     }
-
-  } else {
-
-    let entryForm = addLinkHtml()
-    $('div.home').html(entryForm)
-    let items = [...store.store.bookmarks] 
-    const addBookmarks = generateBookmarkString(items);
-    $('ul').html(addBookmarks)
+    
   }
+  
 
   
 }
@@ -187,6 +200,10 @@ function addLink(){
       api.createBookMark(title, link, description, rating)
       .then(newItem => {
         store.addToStore(newItem)
+        render()
+      })
+      .catch((error) =>{
+        store.setError(error.message)
         render()
       })
 
@@ -243,6 +260,10 @@ function deleteItem(){
     .then(() => {
       store.findAndDelete(id)
       render();
+    }) 
+      .catch((error) =>{
+      store.setError(error.message)
+      render()
     })
   });
 }
@@ -261,7 +282,6 @@ function openEdit(){
     event.preventDefault();
     store.toggleEdit();
     const id = getItemFromElement(event.currentTarget)
-    console.log(this.closest('li'))
     render()
     
   })
@@ -290,7 +310,11 @@ function editValue(){
       .then(() => {
         store.findAndUpdate(id, {title:title, url: link, desc: description, rating: rating })
         render();
-    })
+      })
+      .catch((error) =>{
+      store.setError(error.message)
+      render()
+      })
     store.toggleEdit();
     render()    
    }

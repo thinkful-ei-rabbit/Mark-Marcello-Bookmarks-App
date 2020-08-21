@@ -5,19 +5,19 @@
 let store = {
   bookmarks: [],
   adding: false,
-  error: false,
+  error: null,
   filter: 0,
   editing: false,
   expanded: null
 };
 
 // Function to toggle error
-function addError(){
-  if (store.error === false){
-    store.error = true
-  } else{
-    store.error = false
-  }
+function setError(err){
+  store.error = (err)
+}
+
+function clearError(){
+  store.error = null
 }
 
 // function to toggle adding mode
@@ -66,10 +66,11 @@ export default {
   addToStore,
   store,
   findAndDelete,
-  addError,
   toggleAdding,
   toggleRating,
   toggleEdit,
   toggleExpand,
-  findAndUpdate
+  findAndUpdate,
+  setError,
+  clearError
 }

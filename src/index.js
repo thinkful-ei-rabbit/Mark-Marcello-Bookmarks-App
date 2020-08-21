@@ -10,12 +10,11 @@ import $ from 'jquery'
 function main(){
 
   api.getBookmarks()
-.then(items => {
-  console.log(items)
-  items.forEach(function (item){
-    store.addToStore(item)
-  })
-  query.render()
+    .then(items => {
+       items.forEach(function (item){
+       store.addToStore(item)
+    })
+    query.render()
 })
 query.eventHandlers()
 
