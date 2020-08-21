@@ -7,6 +7,16 @@ This is a fun bookmark app that performs simple AJAX fetch calls for all states 
 
 [Live Link!](https://thinkful-ei-rabbit.github.io/Mark-Marcello-Bookmarks-App/)
 
+
+## About Me
+
+*[GitHub Profile](https://github.com/Mark-The-Dev)
+*[LinkedIn](https://www.linkedin.com/in/mark-marcello-8896481b1)
+
+## Special Thanks
+
+To Thinkful's Engineering Immersion Course, and Terra T
+
 ## User Stories completed
 
 I can add bookmarks to my bookmark list. Bookmarks contain:
@@ -29,12 +39,3 @@ Check all validations in the API documentation (e.g. title and url field require
 I can select from a dropdown (a <select> element) a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection
 
 (Extension feature - optional) I can edit the rating and description of a bookmark in my list
-
-## About Me
-
-*[GitHub Profile](https://github.com/Mark-The-Dev)
-*[LinkedIn](https://www.linkedin.com/in/mark-marcello-8896481b1)
-
-## Special Thanks
-
-To Thinkful's Engineering Immersion Course, and Terra T
