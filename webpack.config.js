@@ -2,6 +2,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  resolve : {
+    alias: { 'jquery-ui': 'jquery-ui/dist/jquery-ui.js' }
+  },  
   entry: './src/index.js',
   output: {
     path: __dirname + '/dist',

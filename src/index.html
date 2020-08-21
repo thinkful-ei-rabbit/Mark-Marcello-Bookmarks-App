@@ -4,109 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookmark App</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
   <h1>My Bookmarks</h1>
 </header>
 <main>
+
 <div class = 'home'>
   <button class = 'new'>Add Bookmark</button>
-  <select name="minimum-rating" size= '1'>
-    <option value="" disable selected hidden>Minimum Rating</option>
-    <option value="5stars">5 Stars</option>
-    <option value="4stars">4 Stars</option>
-    <option value="3stars">3 Stars</option>
-    <option value="2stars">2 Stars</option>
-    <option value="1star">1 Star</option>
+  <select class ='select' name="minimum-rating" size= '1'>
+    <option name= 'rating' value="0" disable selected hidden>Minimum Rating</option>
+    <option name ='rating' value="5">5 Stars <span>⭐⭐⭐⭐⭐</span></option>
+    <option name ='rating' value="4">4 Stars <span>⭐⭐⭐⭐✰</span></option>
+    <option name ='rating' value="3">3 Stars <span>⭐⭐⭐✰✰</span></option>
+    <option name ='rating' value="2">2 Stars <span>⭐⭐✰✰✰</span></option>
+    <option name ='rating' value="1">1 Star <span>⭐✰✰✰✰</span></option>
   </select>
 </div>
 
   <ul>
-    <!-- <li>
-      <div class = 'list'>
-        <div class = 'item'>
-          <section><p>Title</p></section>
-        </div>
-        <div class = 'item'>  
-          <section><p>Rating</p></section>
-       </div>
-      </div>
-    </li> -->
+   
   </ul>
-<!-- <h2>(expanded view / replaces home div)</h2>
-<form>
-<h3>Create a Bookmark</h3>
-<div class = 'all'>
-  <div class = 'column'>
-    <div class = 'row'>
-      <input class= 'title' type="text" placeholder ='Title' name ='title'>
-      <input class = 'link' type="text" placeholder = 'Link goes here'name ='link'>
-    </div>
-    <textarea id="description" cols="30" rows="10" placeholder = 'Description goes here.' name ='description'></textarea>
-  </div>
-  <div class = 'radio'>
-    <input type="radio" name="rating" id="5stars">
-    <label for="5stars">5 Stars!</label>
-    <input type="radio" name="rating" id="4stars">
-    <label for="4stars">4 Stars!</label>
-    <input type="radio" name="rating" id="3stars">
-    <label for="3stars">3 Stars!</label>
-    <input type="radio" name="rating" id="2stars">
-    <label for="2stars">2 Stars!</label>
-    <input type="radio" name="rating" id="1star">
-    <label for="1star">1 Star!</label>
-  </div>
-</div>
-<button>Create</button>
-<button>Edit</button>
-</form>
 
-<div class = 'list'>
-  <div class = 'item'>
-    <section><p>Title</p></section>
-  </div>
-  <div class = 'item'>  
-    <section><p>Rating</p></section>
-  </div>
-</div>
-
-<h3>(On Link Click / replaces that link clicked)</h3>
-<div class = 'home'>
-  <button class = 'new'>Add Bookmark</button>
-  <select name="minimum-rating" size= '1'>
-    <option value="" disable selected hidden>Minimum Rating</option>
-    <option value="5stars">5 Stars</option>
-    <option value="4stars">4 Stars</option>
-    <option value="3stars">3 Stars</option>
-    <option value="2stars">2 Stars</option>
-    <option value="1star">1 Star</option>
-  </select>
-</div>
-<div class ='expand'>
-  <h3>Title 1</h3>
-  <p>This is a Description about the Title 1 link, This explains more details about the site!</p>
-  <button class ='visit site'>Visit Site!</button>
-  <p>Rating here! (1 - 5 Stars)</p>
-</div>
-<div class = 'list'>
-  <div class = 'item'>
-    <section><p>Title</p></section>
-  </div>
-  <div class = 'item'>  
-    <section>    
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-    </section>
-
-  </div>
-</div> -->
 
 
 </main>
+<div id="confirm">
+  <div class="message"></div><br>
+  <button class="yes">OK, I'm Sorry!</button>
+</div>
+
 </body>
 </html>

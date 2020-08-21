@@ -4,7 +4,7 @@
 let baseUrl = 'https://thinkful-list-api.herokuapp.com/Mark/bookmarks';
 
 
-
+// Performs the first promise sequence for CRUD
 function fetcher(...args){
   let error;
   return fetch(...args)
@@ -23,17 +23,15 @@ function fetcher(...args){
   })
 }
 
-
+// GET fetch
 function getBookmarks() {
   return fetcher(`${baseUrl}`)
   
-
 }
 
-
+// POST fetch
 function createBookMark(title, url, desc, rating){
   let newItem = JSON.stringify({
-     //id: cuid(),
      title: title,
      url: url,
      desc: desc,
@@ -46,11 +44,31 @@ function createBookMark(title, url, desc, rating){
   })
   
 }
+// DELETE fetch
+function deleteBookmarks(id){
+  return fetcher(`${baseUrl}/${id}`, {
+    method: "DELETE"
+  })
+};
+// PATCH fetch for all values
+function updateBookmark(id, title, url, desc, rating){
+  let newItem = JSON.stringify({
+    title: title,
+    url: url,
+    desc: desc,
+    rating: rating 
+ })
+ return fetcher(`${baseUrl}/${id}`, {
+  method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: newItem
+})
 
-
+}
 
 export default{
   getBookmarks,
-  //fetcher,
-  createBookMark
+  createBookMark,
+  deleteBookmarks,
+  updateBookmark
 }

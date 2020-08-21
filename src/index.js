@@ -6,9 +6,10 @@ import query from './query'
 import $ from 'jquery'
 
 
-
+//Main Function Runs all functions and adds DB to local store
 function main(){
-api.getBookmarks()
+
+  api.getBookmarks()
 .then(items => {
   console.log(items)
   items.forEach(function (item){
@@ -17,15 +18,7 @@ api.getBookmarks()
   query.render()
 })
 query.eventHandlers()
-// let google = 'google'
-// let url = 'https://www.google.com'
-// let desc = 'A search engine'
-// let val = 5
-// api.createBookMark(google, url, desc, val)
-// .then(newItem => {
-//   store.addToStore(newItem)
-// })
-// query.render()
+
 }
 
 $(main)
