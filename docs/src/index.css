@@ -33,29 +33,56 @@ main{
 }
 
 
-.item, .expand{
-  display: flex;
-  padding: 4px;
-  justify-content: center;
-}
-.expand{
-  align-items: center;
-}
-
-
-.all {
-  display: flex;
-
-}
-
-.column{
+.radio{
   display: flex;
   flex-direction: column;
 }
 
-.radio{
+form{
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.item, .expand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  div.column, div.row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+  }
+
+.expand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.all, div.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div.list label, div.list input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.changeName {
+  width:210px;
+}
+
+.changeRating{
+  width: 80px;
 }
 
 label, div.item{
@@ -166,4 +193,12 @@ button.yes {
     margin: 1% 20%;
   }
 
+  div.home {
+    flex-direction: row;
+  }
+
+   div.expand{
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }

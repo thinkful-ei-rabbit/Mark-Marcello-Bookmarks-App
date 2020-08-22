@@ -39,10 +39,11 @@ function addHtmlExpanded(item){
         ⭐${item.rating}⭐
      </div>
      <div class = 'expand'>
-      ${item.desc}
+      ${item.desc} 
       <a class = 'button' href='${item.url}';"}'>Link</a>
       <button class = 'edit'>Edit</button>
       <button class = 'delete'>Delete</button>
+      
      </div>
     </div>
     </li>`
