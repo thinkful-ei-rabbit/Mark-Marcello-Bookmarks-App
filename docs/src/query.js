@@ -88,6 +88,7 @@ function addLinkHtml(){
 function editValues(item){
   
 return `<li class="element" data-item-id="${item.id}">
+<form>
 <div class = 'list'>
   <div class = 'item'>
   <label for ='changeName'>Edit the Title!</label>  
@@ -110,6 +111,7 @@ return `<li class="element" data-item-id="${item.id}">
   <button class = 'delete'>Delete</button>
  </div>
 </div>
+</form>
 </li>`
 }
 
@@ -194,11 +196,11 @@ function addLink(){
     if (!title || typeof title !== typeof '' ){
       functionAlert('You need a title' )
     } else if (!link.includes('http')|| link.length < 5 ) {
-      functionAlert('Please use a valid link with http or https protocol. . . You Dummy!' )
+      functionAlert('Please use a valid link with http or https protocol.' )
     } else if (description.length < 1){
-      functionAlert(`Atleast add something to the description. . . Don't be that guy!`)      
+      functionAlert(`Please add a description!`)      
     } else if(!rating){
-      functionAlert('Please Choose a rating, This mui importante!')
+      functionAlert('Please Choose a rating!')
     } else {
       api.createBookMark(title, link, description, rating)
       .then(newItem => {
@@ -272,12 +274,12 @@ function deleteItem(){
 }
 // Function that sets the filter rating to show whats displayed
 function setRatingFilter(){
-  $('main').on('click', '.select', function (){
-    let rating = $('option:selected').val();
+  $('select').on('change', function (){
+    let rating = this.value
     store.toggleRating(rating)
-    render();
+     render();
   })
-  render();
+  
 }
 
 // Function to open edit mode on any bookmark
