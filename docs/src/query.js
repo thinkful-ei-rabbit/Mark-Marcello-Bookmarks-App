@@ -55,6 +55,7 @@ function addHtmlExpanded(item){
 // Holds html for the add bookmark form
 function addLinkHtml(){
   return `<form>
+  <fieldset>
   <h3>Create a Bookmark</h3>
   <div class = 'all'>
     <div class = 'column'>
@@ -79,6 +80,7 @@ function addLinkHtml(){
   </div>
   <button class ='create'>Create</button>
   <button class = 'cancel'>Cancel</button>
+  </fieldset>
   </form>`
 }
 
@@ -275,6 +277,7 @@ function setRatingFilter(){
     store.toggleRating(rating)
     render();
   })
+  render();
 }
 
 // Function to open edit mode on any bookmark
